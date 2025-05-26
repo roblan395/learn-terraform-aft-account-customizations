@@ -4,6 +4,6 @@ resource "random_pet" "bucket_name" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket        = "sandbox-bucket-${random_pet.bucket_name.id}"
+  bucket        = "sandbox-bucket-rl-${random_pet.bucket_name.id}"
   force_destroy = true
 }
