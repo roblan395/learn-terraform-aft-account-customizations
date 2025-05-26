@@ -1,6 +1,9 @@
-data "aws_caller_identity" "current" {}
+resource "random_pet" "bucket_name" {
+  length    = 2
+  separator = "-"
+}
 
-resource "aws_s3_bucket" "sandbox_bucket" {
-  bucket = "aft-sandbox-${data.aws_caller_identity.current.account_id}"
-  acl    = "private"
+resource "aws_s3_bucket" "my_bucket" {
+  bucket        = "sandbox-bucket-${random_pet.bucket_name.id}"
+  force_destroy = true
 }
